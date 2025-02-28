@@ -27,11 +27,13 @@ public class LoginServlet extends HttpServlet {
         String user = request.getParameter("user");
         String pwd = request.getParameter("pwd");
 
+        // Ensures the username starts with an uppercase letter
         String capsRegex = "^[A-Z].*";
         Pattern nameCapsPattern = Pattern.compile(capsRegex);
         Matcher nameCapsMatcher = nameCapsPattern.matcher(user);
 
-        String nameLengthRegex = "^.{3,}$";
+        // Ensures the username is 3 character length
+        String nameLengthRegex = "^[A-Z][a-zA-Z]{2,}$";
         Pattern nameLengthPattern = Pattern.compile(nameLengthRegex);
         Matcher nameLengthMatcher = nameLengthPattern.matcher(user);
 
